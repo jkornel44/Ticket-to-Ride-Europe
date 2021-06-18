@@ -15,18 +15,18 @@ http://localhost:3000
 MIT
 
 ## Screenshots
-![start page](screenshots/start_page.png)
+![start page](screenshots/start_page.jpg)
 
 > Start page.
 
-![create room](screenshots/create_room.png)
+![create room](screenshots/create_room.jpg)
 
 > Create room page.
 
-![lobby](screenshots/lobby.png)
+![lobby](screenshots/lobby.jpg)
 
 > Lobby.
 
-![Game page](screenshots/game_board.png)
+![Game page](screenshots/game_board.jpg)
 
 > The game page.
