@@ -1,0 +1,706 @@
+body {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    background: url('../img/main-bg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+}
+
+.content {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 200px auto 100px;
+    grid-template-areas:
+    ". header ."
+    ". main ."
+    "footer footer footer";
+}
+
+header {
+    grid-area: header;
+    justify-self: center;
+}
+
+.game {
+    box-sizing: border-box;
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+
+    justify-content: center;
+
+    grid-template-columns: 250px 105.065vh 15%;
+    grid-template-rows: 60px auto 1fr;
+    grid-template-areas:
+    ".          header  .    "
+    "opponents  board   cards"
+    "history    player  cards";
+
+    gap: 10px;
+    padding: 10px 10px 10px 10px;
+
+    background: rgba( 255, 255, 255, 0.60 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+}
+
+#opponents {
+    grid-area: opponents;
+}
+
+#playertag {
+    width: 200px;
+    height: 50px;
+    position: relative;
+    border-radius: 5px;
+    backdrop-filter: blur( 9.5px );
+    -webkit-backdrop-filter: blur( 9.5px );
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+}
+
+.active {
+    background-color: #ffffff;
+}
+
+.inactive {
+    background: rgba( 255, 255, 255, 0.5 );
+}
+
+#playercolor {
+    float: left;
+    width: 5%;
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+}
+
+#playerdata {
+    float: right;
+    width: 95%;
+    height: 100%;
+}
+
+#playername {
+    margin: 0px;
+    padding: 3px 0 0 5px;
+    color: #000000;
+    font-size: 1rem;
+}
+
+#playerstats {
+    margin: 0px;
+    color: #000000;
+    font-size: .5rem;
+    padding-left: 2px;
+}
+
+#history {
+    grid-area: history;
+    height: 75%;
+    overflow: scroll;
+}
+
+#player {
+    grid-area: player;
+    min-height: 150px;
+    position: relative;
+}
+
+#cards {
+    grid-area: cards;
+    max-width: 200px;
+}
+
+#container_gametable {
+    grid-area: board;
+    position: relative;
+    box-sizing: border-box;
+    width: 100vw; 
+    height: 46.6375vh;
+    min-height: 70vh;
+    max-width: 105.065vh;
+    background: url('../img/map.jpg') no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    border: 13px solid white;
+    border-radius: 5px;
+    color: black;
+    box-sizing: border-box;
+}
+
+#container_scoreboard {
+    grid-area: board;
+    position: relative;
+    box-sizing: border-box;
+    width: 100vw; 
+    height: 46.6375vh;
+    min-height: 70vh;
+    max-width: 105.065vh;
+    border-radius: 5px;
+    color: black;
+    box-sizing: border-box;
+}
+
+#container_scoreboard h1 {
+    margin: 20px;
+    font-size: 2.1rem;
+}
+
+#container_scoreboard table {
+    overflow: scroll;
+    width: 100%;
+}
+
+#container_scoreboard td {
+    font-size: 1rem;
+    vertical-align: baseline;
+}
+
+#container_scoreboard li {
+    position: relative;
+    font-size: 0.8rem; 
+    width: 150px;
+    height:1rem;
+    text-align: center;
+    padding-top: 10px;
+    margin: 0 3px 3px 0;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+#points {
+    background-color: #014f86;
+    color: white;
+    font-size: 0.8rem; 
+    width: 100%;
+    height:1rem;
+    text-align: center;
+    box-shadow: none;
+}
+
+#result {
+    background-color:#1b4332;
+    color: white;
+    font-size: 0.8rem; 
+    width: 100%;
+    height:1rem;
+    text-align: center;
+    box-shadow: none;
+}
+
+#logo {
+    grid-area: header;
+    place-self: center;
+}
+
+.container {
+    grid-area: main;
+    place-self: center;
+    width: 200px;
+    padding: 10%;
+    background-color: rgba(255, 255, 255, .75);  
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);    
+}
+
+td p {
+    font-size: 0.8rem;
+    position: absolute;
+    display: inline;
+    padding-top: 10px;
+    margin: 0 3px 3px 2px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #8a817c;
+    background: #f1f1f1;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.button{
+    margin-top: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+#joingame_btn {
+    background-color: #f7b801;
+    color: black;
+}
+
+#start_btn {
+    background-color: #232323;
+    color: white;
+}
+
+#newgame_btn {
+    background-color: #4f5d75;
+    color: white;
+}
+
+#back_btn {
+    background-color: #ccc5b9;
+    color: black;
+}
+
+#rules_btn {
+    position: fixed;
+    padding: 5px;
+    width: 30px;
+    left: 12px;
+    border-radius: 30px;
+}
+
+#container_rules {
+    width: auto;
+    padding: 5px;
+    border-radius: 0px;
+}
+
+#container_waitingroom {
+    width: 300px;
+    color: black;
+    padding: 10px;
+}
+
+#container_waitingroom h2{
+    text-align: center;
+    color: #293241;
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+
+#history p {
+    max-width: 200px;
+    min-width: 200px;
+    background-color: #353535;
+    color: white;
+    border-radius: 4px;
+    padding: 4px 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 6px;
+}
+
+ul, li, ol {
+	display:inline-block;
+	padding:0;
+	margin:0;
+}
+
+ul {
+    float: left;
+	position:relative;
+    width:100%;
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction: column;	
+}
+	
+
+li {
+    float:right;
+    width:45px;
+    height:120px;
+    margin:0px 220px;
+    padding:10px 20px;
+    border-radius:6px;
+    box-shadow: 1px 3px 20px rgba(0,0,0,.2);
+}
+
+#purple, #white, #blue, #yellow, #orange, #black, #red, #green, #joker, #wagons {
+    font-size:50px;
+	text-align:left;
+}
+
+#cardlist {
+    display: block;
+    border: none;
+    margin-left: auto;
+    width: 400px;
+    margin-right: auto;	
+}	
+
+#cardlist .card {
+    margin-right:-270px;
+	display:inline-block;
+	position:relative;
+    padding-left: 25px;
+	text-align:right;
+	z-index:1000;
+	transition:transform .2s ease-out;
+}
+
+#cardlist .card:hover {
+	cursor:pointer;
+	transform:translate(2%, -20%);
+	transform-origin:bottom right;
+}	
+
+ul li span {
+    top: -15px;
+    left: 12px;
+	display:inline-block;
+	position:relative;
+    font-size: 1.9rem;
+    color: black;
+}	
+
+li.card {
+	transition:all .2s ease-in-out;
+}
+
+li.card:hover {
+	z-index: 5000;
+}
+
+li.card-behind {
+	transition:all .4s ease-out;
+	background:linear-gradient(rgb(40,40,40),rgb(20,20,20));
+    transform: scale(.85, .85);
+	color:grey;
+	z-index: 1;
+}
+
+#red {
+    background-image: url('../img/cards/wagon_red.jpeg');
+    background-size: cover;
+}
+
+#purple {
+    background-image: url('../img/cards/wagon_purple.jpeg');
+    background-size: cover;
+}
+
+#white {
+    background-image: url('../img/cards/wagon_white.png');
+    background-size: cover;
+}
+#black span, #joker span{
+    color: #FFFFFF;
+}
+
+
+#blue {
+    background-image: url('../img/cards/wagon_blue.png');
+    background-size: cover;
+}
+
+#yellow {
+    background-image: url('../img/cards/wagon_yellow.png');
+    background-size: cover;
+}
+
+#orange {
+    background-image: url('../img/cards/wagon_orange.png');
+    background-size: cover;
+}
+
+#black {
+    background-image: url('../img/cards/wagon_black.png');
+    background-size: cover;
+}
+
+#green {
+    background-image: url('../img/cards/wagon_green.jpg');
+    background-size: cover;
+}
+
+#joker {
+    background-image: url('../img/cards/wagon_joker.jpg');
+    background-size: cover;
+}
+
+#desk .card, #decks .card  {
+    margin-left: 0px;
+    width: 90px;
+    height: 65px;
+    margin-bottom: 5px;
+}
+
+#desk .card:hover {
+	cursor:pointer;
+	transform:translate(10%, -5%);
+	transform-origin:bottom right;
+}
+
+#wagons {
+    background-image: url('../img/cards/wagon_deck.jpg');
+    background-size: cover;
+}
+
+#destinations {
+    background-image: url('../img/cards/destination_deck.jpg');
+    background-size: cover;
+}
+
+#myDestinations {
+    float: left;
+    max-width: 210px;
+    max-height: 150px; 
+    position: relative;
+    overflow:inherit;  
+}
+
+.completed {
+    background-color: rgba(216, 243, 220, .75);  
+    color: #1b4332;
+}
+
+.notCompleted {
+    background-color: rgba(247, 237, 226, .75);  
+    color: #522e38;
+}
+
+#buildpanel {
+    float: left;
+    position: absolute;
+    width: 25%;
+    position: relative;
+    overflow:inherit;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#build_btn {
+    background-color: #3f4238;
+    width: 65%;
+    color: white;
+    margin: 0% 0% 5% 5%;
+}
+
+#reset_btn {
+    background-color: #e76f51;
+    width: 20%;
+    color: white;
+    margin: 1% 1% 5% 5%;
+}
+
+#home_btn {
+    background-color: #e76f51;
+    height: 40px;
+    color: white;
+}
+
+#selectedCards {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 1px;
+}
+
+#myDestinations li {
+    font-size: 0.8rem; 
+    width: 140px;
+    height: 0.5rem;
+    text-align: center;
+    padding-top: 3px;
+    vertical-align: middle;
+    margin: 0 3px 3px 0;
+    backdrop-filter: blur(5px);
+    border-radius: 3px;
+}
+
+.cityInner {
+    box-sizing: border-box;
+    position: relative;
+    background: #8e9eab;
+    border: 2px solid #e7ecef;
+    background-color: gray;
+    border-radius: 50%;
+    height: 40%;
+    width:40%;
+    margin: 30%;
+}
+
+.cityWrapper {
+    width: 3.7%;
+    height: 5.5%; 
+    display: block; 
+    position: absolute;
+    border: 2px solid #3f4238;
+    background-color: rgba(0, 0, 0, 0.2);;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    transition:all .4s ease-out;
+}
+
+.cityWrapperSelected {
+    width: 3.7%;
+    height: 5.5%; 
+    display: block; 
+    position: absolute;
+    border: 2px solid #660708;
+    background-color: #ee6c4d;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+}
+
+.cityWrapper:hover{
+    width: 3.7%;
+    height: 5.5%; 
+    display: block; 
+    position: absolute;
+    border: 2px solid #ffbe0b;
+    background-color: #ffe66d;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+}
+
+
+.track {
+    width: 3.1%;
+    height: 2.0%; 
+    display: block; 
+    position: absolute;
+    border-radius: 3px;
+    top: 50%;
+    left: 50%;
+}
+
+#red_track {
+    border: 2px solid #e63946;
+    background-color: #fec5bb;
+}
+
+#green_track {
+    border: 2px solid #1b4332;
+    background-color: #52b788;
+}
+
+#purple_track {
+    border: 2px solid #735d78;
+    background-color: #b392ac;
+}
+
+#yellow_track {
+    border: 2px solid #ffbe0b;
+    background-color: #ffe66d;
+}
+
+#gray_track {
+    border: 2px solid #3f4238;
+    background-color: #6b705c;
+}
+
+#orange_track {
+    border: 2px solid #fb5607;
+    background-color: #ffcb77;
+}
+
+#blue_track {
+    border: 2px solid #274c77;
+    background-color: #6096ba;
+}
+
+#black_track {
+    border: 2px solid #0a0908;
+    background-color: #22333b;
+}
+
+#white_track {
+    border: 2px solid #e7ecef;
+    background-color: #f6fff8;
+}
+
+
+
+#red_wagon {
+    border: 2px solid #e63946;
+    background-color: #e5e5f7;
+    background-image: linear-gradient(to right, #ee6c4d, #ee6c4d 4.5px, #e5e5f7 4.5px, #e5e5f7 );
+    background-size: 9px 100%;
+}
+
+#green_wagon {
+    border: 2px solid #1b4332;
+    background-color: #e5e5f7;
+    background-image: linear-gradient(to right, #006466, #006466 4.5px, #e5e5f7 4.5px, #e5e5f7 );
+    background-size: 9px 100%;
+}
+
+#purple_wagon {
+    border: 2px solid #735d78;
+    background-color: #e5e5f7;
+    background-image: linear-gradient(to right, #5a189a, #5a189a 4.5px, #e5e5f7 4.5px, #e5e5f7 );
+    background-size: 9px 100%;
+}
+
+#blue_wagon {
+    border: 2px solid #274c77;
+    background-color: #e5e5f7;
+    background-image: linear-gradient(to right, #014f86, #014f86 4.5px, #e5e5f7 4.5px, #e5e5f7 );
+    background-size: 9px 100%;
+}
+
+#yellow_wagon {
+    border: 2px solid #ffbe0b;
+    background-color: #e5e5f7;
+    background-image: linear-gradient(to right, #ffb700, #ffb700 4.5px, #e5e5f7 4.5px, #e5e5f7 );
+    background-size: 9px 100%;
+}
+
+#response {
+    position: fixed;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: white;
+    background-color: red;
+}
+
+#roomID {
+    text-align: center;
+    background-color: white;
+    -moz-box-shadow:    inset 0 0 4px gray;
+    -webkit-box-shadow: inset 0 0 4px gray;
+    box-shadow:         inset 0 0 4px gray;
+    margin-top: 5px;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    padding: 5%;
+    border-radius: 3px;
+} 
+
+#players {
+    text-align: center;
+    color: white;
+    margin-top: 5px;
+    border: none;
+    width: 90%;
+    padding: 5%; 
+    border-radius: 3px;
+} 
+
+.columnWrapper {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .75);  
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);    
+    padding: 5px;
+    margin-right: 5px;
+}
+
+
+
+
